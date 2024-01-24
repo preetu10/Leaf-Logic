@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Leaf Logic</string>
+    <string name="get_started">Get Started</string>
+    <string name="about_us">About Us</string>
+    <string name="rating">Rating</string>
+    <string name="login_text">LogIn</string>
+    <string name="enter_email">Enter Your Email Address</string>
+    <string name="enter_pass">Enter Your Password</string>
+    <string name="signup_text">SignUp</string>
+    <string name="enter_name">Enter Your Name</string>
+    <string name="demo_name">Mahfuja Yesmin</string>
+    <string name="demo_email">mahfujasolaiman77@gmail.com</string>
+
+</resources>
