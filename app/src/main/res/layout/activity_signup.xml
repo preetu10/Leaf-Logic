@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,6 +9,13 @@
     android:background="@color/background"
     tools:context=".SignupActivity">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginTop="70dp"
+    >
 
     <TextView
         android:id="@+id/loginTextId"
@@ -31,6 +38,53 @@
         android:textColor="@color/black"
         android:padding="10dp"
         />
+
+    <EditText
+        android:id="@+id/signupUserNameId"
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:hint="@string/enter_user_name"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        />
+    <EditText
+        android:id="@+id/signupbirthId"
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:hint="@string/enter_user_birth"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        />
+    <TextView
+        android:id="@+id/birthViewId"
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:hint="@string/enter_user_profession"
+        android:textColor="@color/black"
+        android:padding="5dp"
+        />
+
+    <Spinner
+        android:id="@+id/signupprofessionId"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        />
     <EditText
         android:id="@+id/signupEmailId"
         android:layout_marginTop="20dp"
@@ -40,6 +94,18 @@
         android:textStyle="bold"
         android:hint="@string/enter_email"
         android:inputType="textEmailAddress"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        />
+    <EditText
+        android:id="@+id/signupPhoneId"
+        android:layout_marginTop="20dp"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:hint="@string/enter_user_phone"
+        android:inputType="text|phone"
         android:textColor="@color/black"
         android:padding="10dp"
         />
@@ -63,14 +129,15 @@
         android:layout_marginTop="15dp"
         android:background="@color/button"
         android:text="@string/signup_text"
-        android:textSize="20sp"
+        android:textSize="18sp"
         />
 
 
 
 
 
-
-
-
 </LinearLayout>
+
+
+
+</ScrollView>

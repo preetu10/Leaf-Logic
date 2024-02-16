@@ -7,8 +7,34 @@
     <string name="enter_email">Enter Your Email Address</string>
     <string name="enter_pass">Enter Your Password</string>
     <string name="signup_text">SignUp</string>
-    <string name="enter_name">Enter Your Name</string>
     <string name="demo_name">Mahfuja Yesmin</string>
+    <string name="enter_name">Enter Your Name</string>
+    <string name="enter_user_name">Enter User Name</string>
+    <string name="enter_user_phone">Enter User Phone Number</string>
+    <string name="enter_user_birth">Enter Birth Date</string>
+    <string name="enter_user_profession">Select Profession</string>
+    <string name="logo">logo</string>
     <string name="demo_email">mahfujasolaiman77@gmail.com</string>
+    <string name="about_description">Ever wondered what medicinal properties lurk in that fascinating leaf
+        you found? Leaf Logic is your mobile companion, empowering you to identify and unlock the potential
+        of medicinal plants with ease</string>
+    <string name="key_features">Key Features:</string>
+    <string name="feature1">Accurate Leaf Identification: </string>
+    <string name="feature1_description">Use our image recognition technology to instantly identify unknown
+        leaves and discover their medicinal uses.</string>
+    <string name="feature2">Learn and Share: </string>
+    <string name="feature2_description">Dive into a wealth of information about various medicinal plants,
+        their properties, and traditional uses</string>
+    <string name="feature3">Share Your Knowledge:  </string>
+    <string name="feature3_description">Contribute to the community by posting blogs with images and insights
+        about using medicinal plants.</string>
+    <string name="feature4">Engage and Discuss: </string>
+    <string name="feature4_description">Like, dislike, and comment on blog posts to share your experiences
+        and learn from others.</string>
+    <string name="address">Location of Head Quarter:</string>
+    <string name="address_des">Chittagong University Rd, Chittagong 4331</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

@@ -19,6 +19,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        this.setTitle("Leaf Logic");
+
         signup= (Button) findViewById(R.id.signup);
         signin= (Button) findViewById(R.id.login);
         edittext1=(EditText) findViewById(R.id.loginEmailId);

@@ -9,25 +9,34 @@
     android:background="@color/background"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="40sp"
-        android:textColor="@color/main"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-       />
+<!--    <TextView-->
+<!--        android:id="@+id/textView"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/app_name"-->
+<!--        android:textSize="40sp"-->
+<!--        android:textColor="@color/main"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textAppearance="?android:attr/textAppearanceLarge"-->
+<!--       />-->
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="500dp"
+        android:layout_height="300dp"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="0dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/logo"
+        />
 
     <Button
         android:id="@+id/aboutUs"
         android:layout_width="150dp"
         android:layout_height="45dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="0dp"
         android:background="@color/button"
         android:text="@string/about_us"
-        android:textSize="20sp"
+        android:textSize="18sp"
         />
     <Button
         android:id="@+id/rating"
@@ -36,17 +45,16 @@
         android:layout_marginTop="10dp"
         android:background="@color/button"
         android:text="@string/rating"
-        android:textSize="20sp"
+        android:textSize="18sp"
         />
     <Button
         android:id="@+id/startId"
-        android:layout_width="250dp"
+        android:layout_width="270dp"
         android:layout_height="45dp"
         android:layout_marginTop="10dp"
         android:background="@color/button"
         android:text="@string/get_started"
-        android:drawableEnd="@drawable/right"
-        android:textSize="20sp"
+        android:textSize="19sp"
         android:backgroundTint="@color/button"
         />
 
