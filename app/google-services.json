@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "200231810644",
-    "project_id": "leaf-logic",
-    "storage_bucket": "leaf-logic.appspot.com"
+    "project_number": "195063076635",
+    "project_id": "leaf-logic-f474a",
+    "storage_bucket": "leaf-logic-f474a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:200231810644:android:0d287a4d0eedc95c281fc1",
+        "mobilesdk_app_id": "1:195063076635:android:41e29454dab79b60a125be",
         "android_client_info": {
           "package_name": "com.example.myfirstapp"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCUQJStV4vOTIE4um4WjMpQXbyF9Ebr4zc"
+          "current_key": "AIzaSyB2MAdhbJT0GyniQRRI14ln1KHo5dBBrZc"
         }
       ],
       "services": {
