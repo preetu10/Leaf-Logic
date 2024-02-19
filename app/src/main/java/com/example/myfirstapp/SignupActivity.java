@@ -8,6 +8,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -99,36 +101,35 @@ public class SignupActivity extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
+        edittext4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int before, int count) {
+                // Not used in this case
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                // Called when the user is typing
+                String enteredUserName = charSequence.toString().trim();
+                checkUsernameUnique(enteredUserName);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
 
         signUp.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
 
-                String userName=edittext4.getText().toString().trim();
-                checkUsernameUnique(userName);
+               userRegister();
             }
 
-            private void checkUsernameUnique(final String userName) {
-                databaseReference.child(userName).addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            // Username is not unique
-                            Toast.makeText(SignupActivity.this, "Username is already taken. Choose a different one.", Toast.LENGTH_SHORT).show();
-                        } else {
-                            // Username is unique, proceed with user registration
-                            userRegister();
-                        }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        // Handle errors if any
-                        Toast.makeText(SignupActivity.this, "Error checking username uniqueness", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
             private void userRegister(){
                 String name = edittext1.getText().toString().trim();
                 String userName=edittext4.getText().toString().trim();
@@ -158,7 +159,7 @@ public class SignupActivity extends AppCompatActivity {
                     return;
                 }
                else if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                    Toast.makeText(SignupActivity.this,"Enter a valid email address",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this,"Enter a Valid Email Address",Toast.LENGTH_SHORT).show();
                     return;
                 }
                else if (phone.isEmpty()) {
@@ -166,7 +167,7 @@ public class SignupActivity extends AppCompatActivity {
                     return;
                 }
                else if(phone.length()<11){
-                    Toast.makeText(SignupActivity.this,"Enter cCorrect Phone Number.",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this,"Enter Correct Phone Number.",Toast.LENGTH_SHORT).show();
                     return;
                 }
                else if (password.isEmpty()) {
@@ -207,11 +208,10 @@ public class SignupActivity extends AppCompatActivity {
 
                                            })
                                            .addOnFailureListener(e ->
-                                                   Toast.makeText(SignupActivity.this, "Failed to save user data: " + e.getMessage(), Toast.LENGTH_SHORT).show()
+                                                   Toast.makeText(SignupActivity.this, "Failed to save user data. " , Toast.LENGTH_SHORT).show()
                                            );
                                } else {
-                                   // If sign up fails, display a message to the user.
-                                   Toast.makeText(SignupActivity.this, "Signup failed: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                   Toast.makeText(SignupActivity.this, "Signup failed. " , Toast.LENGTH_SHORT).show();
                                }
                         }
                            else {
@@ -233,4 +233,26 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+    private void checkUsernameUnique(final String enteredUserName) {
+        databaseReference.child(enteredUserName).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    // Username is not unique
+                    edittext4.setError("Username is already taken. Choose a different one.");
+                } else {
+                    // Username is unique, remove any previous error
+                    edittext4.setError(null);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle errors if any
+                Toast.makeText(SignupActivity.this, "Error checking username uniqueness", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 }

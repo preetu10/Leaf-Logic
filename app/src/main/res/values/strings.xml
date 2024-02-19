@@ -35,6 +35,13 @@
     <string name="address_des">Chittagong University Rd, Chittagong 4331</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signout">Log Out</string>
+    <string name="user_info">User Information</string>
+    <string name="name">Name:  </string>
+    <string name="email">Email Address:  </string>
+    <string name="phone">Phone Number: </string>
+    <string name="birth">Birth Date: </string>
+    <string name="prof">Profession: </string>
 
 
 </resources>

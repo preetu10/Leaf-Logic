@@ -12,22 +12,22 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:src="@drawable/logo"
         android:layout_marginBottom="0dp"
+        android:layout_marginTop="5dp"
         android:scaleType="fitCenter"
         android:contentDescription="@string/logo"
         />
 
     <TextView
-        android:id="@+id/user_info"
+        android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User Information"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textColor="#016A70"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="5dp"
         android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceLarge"
         />
@@ -35,15 +35,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_gravity="start"
+        android:layout_marginStart="20dp"
         >
         <TextView
             android:id="@+id/user_name_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name: "
-            android:textSize="20sp"
+            android:text="@string/name"
+            android:textSize="15sp"
             android:textColor="@color/main"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
             android:textStyle="bold"
 
             />
@@ -51,44 +54,146 @@
         android:id="@+id/u_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/demo_name"
-        android:textSize="20sp"
+        android:textSize="15sp"
         android:textColor="@color/main"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:textStyle="bold"
         android:textColorHighlight="@color/hover_over_main"
-
         />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_gravity="start"
+        android:layout_marginStart="20dp"
        >
         <TextView
             android:id="@+id/user_email_tag"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email: "
-            android:textSize="20sp"
+            android:text="@string/email"
+            android:textSize="15sp"
             android:textColor="@color/main"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
             android:textStyle="bold"
-
             />
         <TextView
             android:id="@+id/u_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/demo_email"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textColor="@color/main"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:textStyle="bold"
             android:textColorHighlight="@color/hover_over_main"
-
             />
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="start"
+        android:layout_marginStart="20dp"
+        >
+        <TextView
+            android:id="@+id/user_phone_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/phone"
+            android:textSize="15sp"
+            android:textColor="@color/main"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/u_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/main"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColorHighlight="@color/hover_over_main"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="start"
+        android:layout_marginStart="20dp"
+        >
+        <TextView
+            android:id="@+id/user_birth_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/birth"
+            android:textSize="15sp"
+            android:textColor="@color/main"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/u_birth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/main"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColorHighlight="@color/hover_over_main"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="start"
+        android:layout_marginStart="20dp"
+        >
+        <TextView
+            android:id="@+id/user_profession_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prof"
+            android:textSize="15sp"
+            android:textColor="@color/main"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/u_profession"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/main"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColorHighlight="@color/hover_over_main"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/signout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/signout"
+        android:background="@color/button"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        />
 
 
 </LinearLayout>
