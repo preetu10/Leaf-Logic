@@ -85,6 +85,7 @@
         android:textColor="@color/black"
         android:padding="10dp"
         />
+
     <EditText
         android:id="@+id/signupEmailId"
         android:layout_marginTop="20dp"
