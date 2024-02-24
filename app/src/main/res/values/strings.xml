@@ -42,6 +42,10 @@
     <string name="phone">Phone Number: </string>
     <string name="birth">Birth Date: </string>
     <string name="prof">Profession: </string>
+    <string name="rate_us">Rate Us</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="write_here">Write Here</string>
+    <string name="submit">Submit</string>
 
 
 </resources>
