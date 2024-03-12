@@ -1,76 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".RatingActivity">
+    android:gravity="center_vertical"
+    android:padding="20dp"
+    android:background="@color/card_background"
+    tools:context=".AverageRatingActivity">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="300dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="0dp"
-        android:contentDescription="@string/logo"
-        android:scaleType="fitCenter"
-        android:src="@drawable/logo" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rate_us"
-        android:textSize="25sp"
-        android:textStyle="bold"
-        android:textColor="@color/main"
-        android:layout_marginBottom="10dp"/>
-
-    <RatingBar
-        android:id="@+id/ratingBarId"
-        android:layout_width="245dp"
-        android:layout_height="50dp"
-        android:paddingBottom="5dp"
-        android:numStars="5"
-        android:stepSize="1.0"
-        />
-
-    <TextView
-        android:id="@+id/textView2"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/send_feedback"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:padding="20dp"
-        />
-    <EditText
-        android:id="@+id/feedbackId"
-        android:layout_width="350dp"
-        android:layout_height="100dp"
-        android:textSize="15sp"
-        android:textStyle="normal"
-        android:hint="@string/write_here"
-        android:inputType="textLongMessage"
-        android:lines="7"
-        android:padding="5dp"
-        android:background="@drawable/edittext_border"
-        android:textColor="@color/black"
-
-       />
-
-    <Button
-        android:id="@+id/ratingSubmitId"
-        android:layout_width="120dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="18dp"
-        android:background="@color/button"
-        android:text="@string/submit"
-        android:textSize="18sp"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="50dp"
+       app:cardBackgroundColor="@color/card_background"
         />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dp">
 
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_marginBottom="0dp"
+            android:contentDescription="@string/logo"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/rate_us"
+            android:textColor="@color/main"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/rate_us_description_own"
+            android:textColor="@color/hover_over_main"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            />
+
+        <RatingBar
+            android:id="@+id/ratingBarId"
+            android:layout_width="245dp"
+            android:layout_height="50dp"
+            android:numStars="5"
+            android:paddingBottom="5dp"
+            android:stepSize="1.0" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="@string/send_feedback"
+            android:textColor="@color/black"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/rate_us_description_own2"
+            android:textColor="@color/hover_over_main"
+            android:textAlignment="center"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            />
+
+        <EditText
+            android:id="@+id/feedbackId"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/edittext_border"
+            android:hint="@string/write_here"
+            android:inputType="textLongMessage"
+            android:lines="7"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="normal"
+
+            />
+
+        <Button
+            android:id="@+id/ratingSubmitId"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="18dp"
+            android:background="@color/button"
+            android:text="@string/submit"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

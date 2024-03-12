@@ -17,6 +17,12 @@
         android:theme="@style/Theme.MyFirstApp"
         tools:targetApi="31">
         <activity
+            android:name=".WeatherActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AverageRatingActivity"
+            android:exported="false" />
+        <activity
             android:name=".RatingActivity"
             android:exported="false" />
         <activity
@@ -52,7 +58,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:theme="@style/NoActionBar"></activity>
+            android:theme="@style/NoActionBar" />
     </application>
 
 </manifest>

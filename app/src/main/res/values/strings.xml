@@ -46,6 +46,20 @@
     <string name="send_feedback">Send Feedback</string>
     <string name="write_here">Write Here</string>
     <string name="submit">Submit</string>
-
+    <string name="rated_by">Rated By:</string>
+    <string name="users">users</string>
+    <string name="see_all_rating">See All Ratings</string>
+    <string name="rate_us_description_own">Give 1 star for poor experience and 5 stars for a very good experience.</string>
+    <string name="rate_us_description_own2">Give some feedback please as your feedback helps us a lot to improve facilities we provide to our users.</string>
+    <string name="rate_policy">Ratings and reviews are verified and are from people who use the same type of device that you use.</string>
+    <string name="see_today_weather">See Today\'s Weather Update of Any CIty</string>
+    <string name="enter_city_name">Enter Your City Name</string>
+    <string name="see_weather">Weather Update</string>
+    <string name="ok">OK</string>
+    <string name="feels_like">Feels Like</string>
+    <string name="max_temp">Maximum Temperature:</string>
+    <string name="min_temp">Minimum Temperature:</string>
+    <string name="humidity">Humidity:</string>
+    <string name="pressure">Pressure:</string>
 
 </resources>

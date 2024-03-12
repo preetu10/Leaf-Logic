@@ -84,8 +84,9 @@ public class ProfileActivity extends AppCompatActivity {
         rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, RatingActivity.class);
+                Intent intent = new Intent(ProfileActivity.this, AverageRatingActivity.class);
                 startActivity(intent);
+
             }
         });
 
