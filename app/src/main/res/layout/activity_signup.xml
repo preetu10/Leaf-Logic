@@ -85,6 +85,16 @@
         android:textColor="@color/black"
         android:padding="10dp"
         />
+    <Spinner
+        android:id="@+id/studentSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:padding="10dp"
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/signupEmailId"

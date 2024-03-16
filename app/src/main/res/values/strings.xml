@@ -42,7 +42,7 @@
     <string name="phone">Phone Number: </string>
     <string name="birth">Birth Date: </string>
     <string name="prof">Profession: </string>
-    <string name="rate_us">Rate Us</string>
+    <string name="rate_us">Rate App</string>
     <string name="send_feedback">Send Feedback</string>
     <string name="write_here">Write Here</string>
     <string name="submit">Submit</string>
@@ -61,5 +61,6 @@
     <string name="min_temp">Minimum Temperature:</string>
     <string name="humidity">Humidity:</string>
     <string name="pressure">Pressure:</string>
+    <string name="see_your_location">See Your Location</string>
 
 </resources>

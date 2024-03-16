@@ -44,8 +44,8 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private DatabaseReference databaseReference;
     int year,month,day;
-    String[] category={"Student","Businessman","Job Holder","Other"};
-    Spinner spinner;
+    String[] category={"Businessman","Job Holder","Student","Other"};
+    Spinner spinner,studentSpinner;
     private Button signUp;
     private EditText edittext1,edittext2,edittext3,edittext4,edittext5;
     EditText dateFormat;
@@ -59,6 +59,7 @@ public class SignupActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference("usernames");
         firestore = FirebaseFirestore.getInstance();
         spinner =(Spinner)findViewById(R.id.signupprofessionId);
+        studentSpinner=(Spinner)findViewById(R.id.studentSpinner);
         dateFormat=(EditText)findViewById(R.id.signupbirthId) ;
         signUp=(Button)findViewById(R.id.signupId);
         edittext1=(EditText) findViewById(R.id.signupNameId);
@@ -67,13 +68,44 @@ public class SignupActivity extends AppCompatActivity {
         edittext4= (EditText)findViewById(R.id.signupUserNameId);
         edittext5=(EditText) findViewById(R.id.signupPhoneId);
         final Calendar calendar= Calendar.getInstance();
+
         ArrayAdapter<String> adapter=new ArrayAdapter<>(SignupActivity.this,android.R.layout.simple_spinner_item,category);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+                String value;
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String value=parent.getItemAtPosition(position).toString();
+                  value=parent.getItemAtPosition(position).toString();
+
+                if ("Student".equals(value)) {
+                    studentSpinner.setVisibility(View.VISIBLE);
+
+                    String[] studentCategory = {"School Student", "College Student", "University Student"};
+                    ArrayAdapter<String> subAdapter = new ArrayAdapter<>(
+                            getApplicationContext(),
+                            android.R.layout.simple_spinner_item,
+                            studentCategory
+                    );
+
+                    subAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    studentSpinner.setAdapter(subAdapter);
+
+                    studentSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                          String subValue = parentView.getItemAtPosition(position).toString();
+                          value=subValue;
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parentView) {
+                        }
+                    });
+                } else {
+                    studentSpinner.setVisibility(View.INVISIBLE);
+                }
+
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {

@@ -33,9 +33,6 @@ public class Map_Fragment extends Fragment {
 
                         MarkerOptions markerOptions = new MarkerOptions().position(chittagongUniversityLocation).title("Chittagong University Rd, Chittagong 4331");
 
-
-//                        markerOptions.position(latLng);
-//                        markerOptions.title(latLng.latitude+" KG "+latLng.longitude );
                         googleMap.clear();
                         googleMap.addMarker(markerOptions);
                         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(chittagongUniversityLocation, 15));

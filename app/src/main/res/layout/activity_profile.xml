@@ -182,30 +182,54 @@
             android:textColorHighlight="@color/hover_over_main"
             />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/rateId"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="start"
+        android:layout_marginStart="20dp"
+        android:gravity="center"
+        >
+
+        <Button
+            android:id="@+id/rateId"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/button"
+            android:padding="15dp"
+            android:text="@string/rate_us"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Button
+        android:id="@+id/see_location"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="20dp"
-        android:text="@string/rate_us"
+        android:text="@string/see_your_location"
         android:background="@color/button"
         android:textSize="15sp"
         android:textStyle="bold"
+        android:padding="15dp"
         android:textColor="@color/black"
         android:textAlignment="center"
         />
-
+    </LinearLayout>
     <Button
         android:id="@+id/signout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:layout_marginTop="20dp"
         android:text="@string/signout"
         android:background="@color/button"
         android:textSize="15sp"
         android:textStyle="bold"
         android:textColor="@color/black"
+        android:padding="15dp"
         android:textAlignment="center"
         />
 
