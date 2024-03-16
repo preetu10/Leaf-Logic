@@ -22,7 +22,7 @@ import org.w3c.dom.Text;
 import java.util.Objects;
 
 public class ProfileActivity extends AppCompatActivity {
-    private Button signout,rate,location;
+    private Button signout,rate,location,newsFeed;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firestore;
 
@@ -32,6 +32,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         signout=(Button) findViewById(R.id.signout);
+        newsFeed=(Button) findViewById(R.id.newsFeed);
         rate=(Button) findViewById(R.id.rateId);
         location=(Button)findViewById(R.id.see_location);
         userText=(TextView)findViewById(R.id.user_name) ;
@@ -111,6 +112,15 @@ public class ProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+            }
+        });
+
+        newsFeed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, NewsFeedActivity.class);
+                startActivity(intent);
+
             }
         });
 

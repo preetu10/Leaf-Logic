@@ -62,5 +62,9 @@
     <string name="humidity">Humidity:</string>
     <string name="pressure">Pressure:</string>
     <string name="see_your_location">See Your Location</string>
+    <string name="write_something">Write to post something here
+    </string>
+    <string name="add_photo">Add Photo</string>
+    <string name="enter_title">Enter title of your post</string>
 
 </resources>
