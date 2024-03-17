@@ -69,8 +69,6 @@ public class NewsFeedActivity extends AppCompatActivity {
                             if(postModel!=null){
                                 postsAdapter.addPost(postModel);
                             }
-
-
                         }
 
                     }

@@ -66,5 +66,8 @@
     </string>
     <string name="add_photo">Add Photo</string>
     <string name="enter_title">Enter title of your post</string>
+    <string name="comment">Comment Here</string>
+    <string name="send_comment">Send</string>
+    <string name="comment_tag">Comments</string>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.example.myfirstapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,6 +70,16 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
         }
         holder.postContent.setText(postModel.getPostContent());
         holder.postTitle.setText(postModel.getPostTitle());
+
+
+        holder.comments.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context,CommentsActivity.class);
+                intent.putExtra("postId",postModel.getPostId());
+                context.startActivity(intent);
+            }
+        });
 
 
         db.collection("likes")
@@ -225,7 +236,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
     private TextView userName, postTitle,postContent,likeCount,disLikeCount;
     private ImageView postImage,likeImage,dislikeImage;
 
-    private LinearLayout like,dislike;
+    private LinearLayout like,dislike,comments;
     public MyViewHolder(@NonNull View itemView) {
         super(itemView);
         userName=itemView.findViewById(R.id.userName);
@@ -238,6 +249,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
         dislike=itemView.findViewById(R.id.dislike);
         likeImage=itemView.findViewById(R.id.likeImage);
         dislikeImage= itemView.findViewById(R.id.dislikeImage);
+        comments=itemView.findViewById(R.id.comments);
     }
 }
 }
