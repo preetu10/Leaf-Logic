@@ -1,8 +1,22 @@
 package com.example.myfirstapp;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class PostModel {
 
     private String postId,userId,postContent,postTitle,imagePath;
+    private int likeCount=0;
+    private int dislikeCount=0;
+    private boolean isLiked;
+    private boolean isDisliked;
+
+
+    public PostModel() {
+        // Default constructor required for Firestore deserialization
+    }
+
 
     public PostModel(String postId, String userId, String postTitle,String postContent,  String imagePath, long postingTime) {
         this.postId = postId;
@@ -62,4 +76,36 @@ public class PostModel {
     }
 
     private long postingTime;
+    public int getLikeCount() {
+
+        return likeCount;
+    }
+
+    public void setLikeCount(int likeCount) {
+        this.likeCount = likeCount;
+    }
+
+    public int getDislikeCount() {
+        return dislikeCount;
+    }
+
+    public void setDislikeCount(int dislikeCount) {
+        this.dislikeCount = dislikeCount;
+    }
+
+    public boolean isLiked() {
+        return isLiked;
+    }
+
+    public void setLiked(boolean liked) {
+        isLiked = liked;
+    }
+
+    public boolean isDisliked() {
+        return isDisliked;
+    }
+
+    public void setDisliked(boolean disliked) {
+        isDisliked = disliked;
+    }
 }
