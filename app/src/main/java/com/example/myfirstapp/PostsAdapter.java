@@ -3,6 +3,7 @@ package com.example.myfirstapp;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.ListenerRegistration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,9 +36,18 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
     
     private Context context;
     private List<PostModel> postModelList;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    private Map<String, ListenerRegistration> likeListeners;
+    private Map<String, ListenerRegistration> dislikeListeners;
+    private Map<String, ListenerRegistration> commentListeners;
     public PostsAdapter(Context context){
         this.context=context;
         postModelList=new ArrayList<>();
+        likeListeners = new HashMap<>();  // Initializing likeListeners map otherwise it will give nullpointerexception
+        dislikeListeners = new HashMap<>();
+        commentListeners = new HashMap<>();
     }
     
     public void addPost(PostModel postModel){
@@ -59,7 +70,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         PostModel postModel = postModelList.get(position);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         if (postModel.getImagePath() != null) {
             holder.postImage.setVisibility(View.VISIBLE);
             Glide.with(context)
@@ -80,6 +91,15 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
                 context.startActivity(intent);
             }
         });
+
+        // Load and update likes count
+        loadAndListenLikesCount(postModel.getPostId(), holder.likeCount);
+
+        // Load and update dislikes count
+        loadAndListenDislikesCount(postModel.getPostId(), holder.disLikeCount);
+
+        // Load and update comments count
+        loadAndListenCommentsCount(postModel.getPostId(), holder.commentCount);
 
 
         db.collection("likes")
@@ -233,7 +253,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder{
-    private TextView userName, postTitle,postContent,likeCount,disLikeCount;
+    private TextView userName, postTitle,postContent,likeCount,disLikeCount,commentCount;
     private ImageView postImage,likeImage,dislikeImage;
 
     private LinearLayout like,dislike,comments;
@@ -244,6 +264,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
         postContent=itemView.findViewById(R.id.postContent);
         likeCount=itemView.findViewById(R.id.likeCount);
         disLikeCount=itemView.findViewById(R.id.dislikeCount);
+        commentCount=itemView.findViewById(R.id.commentCount);
         postImage=itemView.findViewById(R.id.postImage);
         like=itemView.findViewById(R.id.like);
         dislike=itemView.findViewById(R.id.dislike);
@@ -252,4 +273,68 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.MyViewHolder
         comments=itemView.findViewById(R.id.comments);
     }
 }
+    private void loadAndListenLikesCount(String postId, TextView textView) {
+        likeListeners.put(postId, db.collection("likes")
+                .whereEqualTo("postID", postId)
+                .addSnapshotListener((queryDocumentSnapshots, e) -> {
+                    if (e != null) {
+                        Log.w("Firestore", "Listen error", e);
+                        return;
+                    }
+
+                    if (queryDocumentSnapshots != null) {
+                        int count = queryDocumentSnapshots.size();
+                        textView.setText(String.valueOf(count));
+                    }
+                }));
+    }
+
+    private void loadAndListenDislikesCount(String postId, TextView textView) {
+        dislikeListeners.put(postId, db.collection("dislikes")
+                .whereEqualTo("postID", postId)
+                .addSnapshotListener((queryDocumentSnapshots, e) -> {
+                    if (e != null) {
+                        // Handle error
+                        return;
+                    }
+
+                    if (queryDocumentSnapshots != null) {
+                        int count = queryDocumentSnapshots.size();
+                        textView.setText(String.valueOf(count));
+                    }
+                }));
+    }
+
+    private void loadAndListenCommentsCount(String postId, TextView textView) {
+        commentListeners.put(postId, db.collection("comments")
+                .whereEqualTo("postId", postId)
+                .addSnapshotListener((queryDocumentSnapshots, e) -> {
+                    if (e != null) {
+                        // Handle error
+                        return;
+                    }
+
+                    if (queryDocumentSnapshots != null) {
+                        int count = queryDocumentSnapshots.size();
+                        textView.setText(String.valueOf(count));
+                    }
+                }));
+    }
+
+    public void removeListeners() {
+        for (ListenerRegistration listener : likeListeners.values()) {
+            listener.remove();
+        }
+        for (ListenerRegistration listener : dislikeListeners.values()) {
+            listener.remove();
+        }
+        for (ListenerRegistration listener : commentListeners.values()) {
+            listener.remove();
+        }
+    }
+
+
+
+
+
 }
