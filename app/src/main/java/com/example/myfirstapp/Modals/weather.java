@@ -4,6 +4,8 @@ public class weather {
     private  int id;
     private String main;
 
+    private String description;
+
     public weather(int id, String main, String description) {
         this.id = id;
         this.main = main;
@@ -34,6 +36,6 @@ public class weather {
         this.description = description;
     }
 
-    private String description;
+
 
 }

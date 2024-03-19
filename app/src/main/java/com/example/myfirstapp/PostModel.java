@@ -1,14 +1,16 @@
 package com.example.myfirstapp;
 
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Time;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class PostModel {
 
     private String postId,userId,postContent,postTitle,imagePath;
-    private int likeCount=0;
-    private int dislikeCount=0;
+    private Timestamp postingTime;
+
     private boolean isLiked;
     private boolean isDisliked;
 
@@ -18,7 +20,7 @@ public class PostModel {
     }
 
 
-    public PostModel(String postId, String userId, String postTitle,String postContent,  String imagePath, long postingTime) {
+    public PostModel(String postId, String userId, String postTitle,String postContent,  String imagePath, Timestamp postingTime) {
         this.postId = postId;
         this.userId = userId;
         this.postContent = postContent;
@@ -67,31 +69,14 @@ public class PostModel {
         this.imagePath = imagePath;
     }
 
-    public long getPostingTime() {
+    public Timestamp getPostingTime() {
         return postingTime;
     }
 
-    public void setPostingTime(long postingTime) {
+    public void setPostingTime(Timestamp postingTime) {
         this.postingTime = postingTime;
     }
 
-    private long postingTime;
-    public int getLikeCount() {
-
-        return likeCount;
-    }
-
-    public void setLikeCount(int likeCount) {
-        this.likeCount = likeCount;
-    }
-
-    public int getDislikeCount() {
-        return dislikeCount;
-    }
-
-    public void setDislikeCount(int dislikeCount) {
-        this.dislikeCount = dislikeCount;
-    }
 
     public boolean isLiked() {
         return isLiked;

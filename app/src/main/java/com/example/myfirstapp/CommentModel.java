@@ -2,15 +2,15 @@ package com.example.myfirstapp;
 
 public class CommentModel {
     private String id,postId,userId,comment;
-    private long commentAt;
 
 
-    public CommentModel(String commentId, String postId, String userId, String comment, long commentAt) {
+
+    public CommentModel(String commentId, String postId, String userId, String comment) {
         this.id = commentId;
         this.postId = postId;
         this.userId = userId;
         this.comment = comment;
-        this.commentAt = commentAt;
+
     }
     public CommentModel(){
 
@@ -47,13 +47,7 @@ public class CommentModel {
         this.comment = comment;
     }
 
-    public long getCommentAt() {
-        return commentAt;
-    }
 
-    public void setCommentAt(long commentAt) {
-        this.commentAt = commentAt;
-    }
 
 
 

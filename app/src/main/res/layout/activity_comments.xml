@@ -5,8 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CommentsActivity">
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:layout_above="@+id/commentSendingLayout"
         android:id="@+id/commentsRecyclerView"
@@ -17,7 +15,7 @@
         android:id="@+id/commentSendingLayout"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-      android:layout_marginBottom="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_centerVertical="true"
         android:layout_height="wrap_content"
         >

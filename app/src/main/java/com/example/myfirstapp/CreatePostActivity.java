@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.myfirstapp.databinding.ActivityCreatePostBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -26,6 +27,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.UUID;
 
 public class CreatePostActivity extends AppCompatActivity {
@@ -35,6 +37,9 @@ public class CreatePostActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
     private Uri pickedImaageUri;
 
+    Timestamp currentTimeStamp = Timestamp.now();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,7 @@ public class CreatePostActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+        Date currentDate = currentTimeStamp.toDate();
 
 
         binding.pickPhoto.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +104,7 @@ public class CreatePostActivity extends AppCompatActivity {
                                    @Override
                                    public void onSuccess(Uri uri) {
                                        progressDialog.cancel();
-                                       PostModel postModel= new PostModel(id,userID,title,postContent,uri.toString(),Calendar.getInstance().getTimeInMillis());
+                                       PostModel postModel= new PostModel(id,userID,title,postContent,uri.toString(),currentTimeStamp);
                                        firestore.collection("posts")
                                                .document(id)
                                                .set(postModel)
@@ -128,7 +134,7 @@ public class CreatePostActivity extends AppCompatActivity {
                });
            }
            else{
-               PostModel postModel= new PostModel(id,userID,title,postContent,null,Calendar.getInstance().getTimeInMillis());
+               PostModel postModel= new PostModel(id,userID,title,postContent,null,currentTimeStamp);
                firestore.collection("posts")
                        .document(id)
                        .set(postModel)

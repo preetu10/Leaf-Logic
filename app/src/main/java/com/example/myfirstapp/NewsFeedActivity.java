@@ -58,6 +58,7 @@ public class NewsFeedActivity extends AppCompatActivity {
     }
     private void loadPosts(){
         firestore.collection("posts")
+                .orderBy("postingTime", Query.Direction.DESCENDING)
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

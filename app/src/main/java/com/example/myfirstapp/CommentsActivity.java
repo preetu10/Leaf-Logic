@@ -96,7 +96,7 @@ public class CommentsActivity extends AppCompatActivity {
     private void postComment(String comment) {
 
         String id= UUID.randomUUID().toString();
-        CommentModel commentModel=new CommentModel(id,postId, firebaseAuth.getUid(),comment,Calendar.getInstance().getTimeInMillis());
+        CommentModel commentModel=new CommentModel(id,postId, firebaseAuth.getUid(),comment);
         firestore.collection("comments")
                 .document(id)
                 .set(commentModel)
