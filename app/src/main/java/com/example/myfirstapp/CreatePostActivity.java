@@ -1,5 +1,7 @@
 package com.example.myfirstapp;
 
+import static java.lang.System.exit;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -121,9 +123,11 @@ public class CreatePostActivity extends AppCompatActivity {
            String postContent=binding.postDescription.getText().toString().trim();
            if(title.isEmpty()){
                Toast.makeText(CreatePostActivity.this, "Post title is required", Toast.LENGTH_SHORT).show();
+              exit(-1);
            }
            if(postContent.isEmpty()){
                Toast.makeText(CreatePostActivity.this, "Post Content is required", Toast.LENGTH_SHORT).show();
+             exit(-1 );
            }
 
            StorageReference storageReference = FirebaseStorage.getInstance().getReference("Posts").child(id + ".png");
