@@ -182,14 +182,13 @@
             android:textColorHighlight="@color/hover_over_main"
             />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-
+        android:layout_gravity="center"
         android:layout_marginVertical="20dp"
-        android:gravity="center"
-        >
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/rateId"
@@ -218,6 +217,7 @@
             android:textSize="15sp"
             android:textStyle="bold" />
     </LinearLayout>
+
     <Button
         android:id="@+id/newsFeed"
         android:layout_width="wrap_content"

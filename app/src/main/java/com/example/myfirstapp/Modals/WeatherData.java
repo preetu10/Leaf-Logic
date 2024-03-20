@@ -38,6 +38,4 @@ public class WeatherData {
         this.name = name;
     }
 
-
-
 }

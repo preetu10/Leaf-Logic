@@ -26,7 +26,7 @@ public class CommentsActivity extends AppCompatActivity {
     ActivityCommentsBinding binding;
     private String postId;
     private CommentAdapter commentAdapter;
-//    private Button sendComment;
+
 
 
     private FirebaseAuth firebaseAuth;
@@ -36,7 +36,7 @@ public class CommentsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityCommentsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        sendComment=(Button)findViewById(R.id.sendComment);
+
         commentAdapter=new CommentAdapter(CommentsActivity.this);
         binding.commentsRecyclerView.setAdapter(commentAdapter);
         binding.commentsRecyclerView.setLayoutManager(new LinearLayoutManager(CommentsActivity.this));
@@ -89,7 +89,6 @@ public class CommentsActivity extends AppCompatActivity {
                         Log.e("Firestore", "Error getting comments: " + e.getMessage(), e);
                         Toast.makeText(CommentsActivity.this, "Failed to load comments: " + e.getMessage(), Toast.LENGTH_SHORT).show();
 
-                       // Toast.makeText(CommentsActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

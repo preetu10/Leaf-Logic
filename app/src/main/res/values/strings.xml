@@ -70,5 +70,7 @@
     <string name="send_comment">Send</string>
     <string name="comment_tag">Comments</string>
     <string name="search">Search</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 
 </resources>

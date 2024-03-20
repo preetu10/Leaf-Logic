@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +22,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -48,6 +51,35 @@ public class CreatePostActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         Date currentDate = currentTimeStamp.toDate();
+
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String userID = currentUser.getUid();
+        DocumentReference userRef = firestore.collection("users").document(userID);
+        userRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                if (document.exists()) {
+                    // DocumentSnapshot contains the data read from the document
+                    String username = document.getString("userName");
+                    Log.d("test",username);
+                    if (username != null) {
+                        binding.userName.setText(username);
+                    }
+                    else{
+                        Toast.makeText(CreatePostActivity.this,"userName cannot be loaded", Toast.LENGTH_SHORT).show();
+
+                    }
+                } else {
+                    Toast.makeText(CreatePostActivity.this,"userName cannot be loadeddd", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Exception e = task.getException();
+                Toast.makeText(CreatePostActivity.this,"userName cannot be loadeddddddddddddd", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
 
 
         binding.pickPhoto.setOnClickListener(new View.OnClickListener() {
@@ -81,8 +113,10 @@ public class CreatePostActivity extends AppCompatActivity {
            String id= UUID.randomUUID().toString();
            String userID;
            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
            userID = currentUser.getUid();
+
+
+
            String title=binding.postTitle.getText().toString().trim();
            String postContent=binding.postDescription.getText().toString().trim();
            if(title.isEmpty()){

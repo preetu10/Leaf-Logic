@@ -105,13 +105,13 @@ public class AverageRatingActivity extends AppCompatActivity {
                 });
             }
         });
-        // Listen for changes to the average rating
+        // Listen for changes in real time to the average rating
         listenForAverageRating();
     }
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Remove listeners when the activity is destroyed to avoid memory leaks
+        // Remove listeners when the activity is destroyed to avoid memory leakage
         if (averageRatingListener != null) {
             averageRatingListener.remove();
         }
@@ -140,12 +140,10 @@ public class AverageRatingActivity extends AppCompatActivity {
                 if (totalUsers > 0) {
                     float average = totalRating / totalUsers;
 
-                    // Update UI with average rating
                     averageRating.setText(String.format("%.1f", average));
                     averageRatingBar.setRating((float)average);
                     averageRatingBar.setIsIndicator(true);
                 } else {
-                    // No ratings yet, update UI accordingly
                     averageRating.setText("0.00");
                     averageRatingBar.setRating(0);
                     averageRatingBar.setIsIndicator(true);
@@ -163,11 +161,10 @@ public class AverageRatingActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
-                            // User has already submitted a rating, update the existing document
+                            // User has already submitted a rating
                             updateRating(userId, ratingCount, feedback);
-
                         } else {
-                            // User hasn't submitted a rating before, create a new document
+                            // User hasn't submitted a rating before
                             submitNewRating(userId, ratingCount, feedback);
                         }
                     } else {
