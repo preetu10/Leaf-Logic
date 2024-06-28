@@ -18,8 +18,8 @@
 
         <ImageView
             android:id="@+id/logo"
-            android:layout_width="300dp"
-            android:layout_height="150dp"
+            android:layout_width="350dp"
+            android:layout_height="200dp"
             android:layout_marginBottom="0dp"
             android:contentDescription="@string/logo"
             android:scaleType="fitCenter"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textColor="@color/main"
-        android:textSize="25sp"
+        android:textSize="30sp"
         android:text="@string/about_us"
          />
     <TextView
@@ -40,8 +40,8 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:layout_margin="8dp"
-        android:lineHeight="15dp"
-        android:textSize="12sp"
+        android:lineHeight="20dp"
+        android:textSize="15sp"
         />
 
     <TextView
@@ -50,7 +50,7 @@
         android:text="@string/key_features"
         android:textAlignment="textStart"
         android:textColor="@color/main"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:textStyle="bold" />
     <LinearLayout
         android:layout_width="wrap_content"
@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/feature1"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textColor="@color/main"
             android:layout_marginTop="8dp"
             android:textStyle="bold"
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/feature1_description"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:layout_marginTop="4dp"
             android:textStyle="normal"
@@ -92,7 +92,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/feature2"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textColor="@color/main"
             android:layout_marginTop="8dp"
             android:textStyle="bold"
@@ -103,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/feature2_description"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:layout_marginTop="4dp"
             android:textStyle="normal"
@@ -121,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/feature3"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textColor="@color/main"
             android:layout_marginTop="8dp"
             android:textStyle="bold"
@@ -132,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/feature3_description"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:layout_marginTop="4dp"
             android:textStyle="normal"
@@ -150,7 +150,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/feature4"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textColor="@color/main"
             android:layout_marginTop="8dp"
             android:textStyle="bold"
@@ -161,7 +161,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/feature4_description"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:textColor="@color/black"
             android:layout_marginTop="4dp"
             android:textStyle="normal"
@@ -171,7 +171,7 @@
 
         <WebView
             android:id="@+id/webvideo"
-            android:layout_width="340dp"
+            android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_margin="20dp"
             />
@@ -180,7 +180,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/address"
-            android:textSize="11sp"
+            android:textSize="14sp"
             android:textColor="@color/main"
             android:layout_marginTop="10dp"
             android:textStyle="bold"
@@ -196,7 +196,7 @@
             android:text="@string/address_des"
             android:textColor="@color/black"
             android:textColorHighlight="@color/hover_over_main"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:textStyle="normal"
             />
         <FrameLayout

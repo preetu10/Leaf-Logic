@@ -1,8 +1,16 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+    id 'com.apollographql.apollo' version '2.5.9'
+
 
 }
+
+//apollo {
+//    service("service") {
+//        packageName.set("com.example.myfirstapp")
+//    }
+//}
 
 android {
     namespace 'com.example.myfirstapp'
@@ -17,9 +25,17 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += ["apollo.schema.file": "$projectDir/src/main/graphql/com/example/myfirstapp/schema.json"]
+            }
+        }
+
     }
     buildFeatures{
         viewBinding true
+        mlModelBinding true
     }
     sourceSets {
         main {
@@ -52,6 +68,9 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-firestore:8.0.2'
     implementation "com.airbnb.android:lottie:6.3.0"
     implementation 'com.google.firebase:firebase-storage:20.3.0'
+    implementation 'org.tensorflow:tensorflow-lite-support:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-metadata:0.1.0'
+    implementation 'org.tensorflow:tensorflow-lite-gpu:2.3.0'
     testImplementation 'junit:junit:4.13.2'
     implementation 'com.google.android.gms:play-services-maps:18.2.0'
     implementation 'com.google.android.gms:play-services-location:21.2.0'
@@ -61,6 +80,15 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.bumptech.glide:glide:4.16.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+
+
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation "io.reactivex.rxjava2:rxjava:2.2.6"
+
+// RxJava2 support
+    implementation 'com.apollographql.apollo:apollo-rx2-support:2.5.9'
+
 
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:32.7.4"))
@@ -68,5 +96,19 @@ dependencies {
     // Add the dependency for the Cloud Storage library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-storage")
+
+    implementation 'com.apollographql.apollo:apollo-runtime:2.5.9'
+//    //graphql dependency
 }
+apollo {
+    service("countries") {
+        sourceFolder.set("com/example/myfirstapp")
+        rootPackageName.set("com.example.myfirstapp")
+        schemaFile.set(file("src/main/graphql/schema.graphqls"))
+        introspection {
+            endpointUrl.set("https://countries.trevorblades.com/graphql")
+        }
+    }
+}
+
 

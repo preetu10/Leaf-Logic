@@ -22,7 +22,7 @@ import org.w3c.dom.Text;
 import java.util.Objects;
 
 public class ProfileActivity extends AppCompatActivity {
-    private Button signout,rate,location,newsFeed;
+    private Button signout,rate,location,newsFeed,detection,country;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firestore;
 
@@ -41,6 +41,8 @@ public class ProfileActivity extends AppCompatActivity {
         phoneText=(TextView)findViewById(R.id.u_phone);
         birthText=(TextView) findViewById(R.id.u_birth);
         professionText=(TextView)findViewById(R.id.u_profession) ;
+        detection=(Button) findViewById(R.id.detection);
+        country=(Button) findViewById(R.id.countries);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
@@ -100,6 +102,14 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        detection.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, DetectionActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +133,17 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+
+        country.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, CountryActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+
 
 
     }

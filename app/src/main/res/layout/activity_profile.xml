@@ -231,11 +231,37 @@
         android:textAlignment="center"
         />
     <Button
+        android:id="@+id/detection"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:text="Detection"
+        android:background="@color/button"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:padding="15dp"
+        android:textAlignment="center"
+        />
+    <Button
         android:id="@+id/signout"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="20dp"
         android:text="@string/signout"
+        android:background="@color/button"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:padding="15dp"
+        android:textAlignment="center"
+        />
+    <Button
+        android:id="@+id/countries"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:text="Countries"
         android:background="@color/button"
         android:textSize="15sp"
         android:textStyle="bold"
