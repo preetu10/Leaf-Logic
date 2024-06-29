@@ -72,5 +72,12 @@
     <string name="search">Search</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="capital">Capital:</string>
+    <string name="currency">Currency:</string>
+    <string name="code">Code:</string>
+    <string name="language">Language:</string>
+    <string name="continent">Continent:</string>
+    <string name="small_heading">Global Country Insights</string>
+    <string name="heading_for_countries_page">Unlock the essence of each country with details on capitals, languages, and cultural highlights.</string>
 
 </resources>

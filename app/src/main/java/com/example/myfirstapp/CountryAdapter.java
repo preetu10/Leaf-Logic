@@ -1,73 +1,3 @@
-//package com.example.myfirstapp;
-//
-//import android.content.Context;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.TextView;
-//import androidx.annotation.NonNull;
-//import androidx.recyclerview.widget.RecyclerView;
-//import com.example.myfirstapp.R;
-//import com.example.myfirstapp.CountriesQuery;
-//import java.util.List;
-//
-//public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryViewHolder> {
-//
-//    private List<CountriesQuery.Country> countries;
-//    private Context context;
-//    private OnItemClickListener onItemClickListener;
-//
-//    public interface OnItemClickListener {
-//        void onItemClick(CountriesQuery.Country country);
-//    }
-//
-//    public CountryAdapter(Context context, List<CountriesQuery.Country> countries, OnItemClickListener onItemClickListener) {
-//        this.context = context;
-//        this.countries = countries;
-//        this.onItemClickListener = onItemClickListener;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public CountryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(context).inflate(R.layout.item_country, parent, false);
-//        return new CountryViewHolder(view);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull CountryViewHolder holder, int position) {
-//        CountriesQuery.Country country = countries.get(position);
-//        holder.bind(country, onItemClickListener);
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return countries.size();
-//    }
-//
-//    static class CountryViewHolder extends RecyclerView.ViewHolder {
-//
-//        TextView countryNameTextView;
-//        TextView countryEmojiTextView;
-//        TextView countryCapitalTextView;
-//
-//        public CountryViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//            countryNameTextView = itemView.findViewById(R.id.countryNameTextView);
-//            countryEmojiTextView = itemView.findViewById(R.id.countryEmojiTextView);
-//            countryCapitalTextView = itemView.findViewById(R.id.countryCapitalTextView);
-//        }
-//
-//        public void bind(CountriesQuery.Country country, OnItemClickListener onItemClickListener) {
-//            countryNameTextView.setText(country.name());
-//            countryEmojiTextView.setText(country.emoji());
-//            countryCapitalTextView.setText(country.capital());
-//
-//            itemView.setOnClickListener(v -> onItemClickListener.onItemClick(country));
-//        }
-//    }
-//}
-//
 package com.example.myfirstapp;
 
 import android.content.Context;
@@ -86,16 +16,10 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
 
     private List<CountriesQuery.Country> countries;
     private Context context;
-    private OnItemClickListener onItemClickListener;
 
-    public interface OnItemClickListener {
-        void onItemClick(CountriesQuery.Country country);
-    }
-
-    public CountryAdapter(Context context, List<CountriesQuery.Country> countries, OnItemClickListener onItemClickListener) {
+    public CountryAdapter(Context context, List<CountriesQuery.Country> countries) {
         this.context = context;
         this.countries = countries;
-        this.onItemClickListener = onItemClickListener;
     }
 
     @NonNull
@@ -108,10 +32,26 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
     @Override
     public void onBindViewHolder(@NonNull CountryViewHolder holder, int position) {
         CountriesQuery.Country country = countries.get(position);
-        holder.countryNameTextView.setText(country.name());
-      //  holder.countryEmojiTextView.setText(country.emoji());
-        holder.countryCapitalTextView.setText(country.capital());
-        holder.itemView.setOnClickListener(v -> onItemClickListener.onItemClick(country));
+        holder.countryNameTextView.setText(getOrDefault(country.name(), "Not defined"));
+        holder.countryCapitalTextView.setText(getOrDefault(country.capital(), "Not defined"));
+        holder.countryEmojiTextView.setText(getOrDefault(country.emoji(), "Not defined"));
+        holder.countryCode.setText(getOrDefault(country.code(), "Not defined"));
+        holder.countryCurrency.setText(getOrDefault(country.currency(), "Not defined"));
+        holder.countryLanguages.setText(getLanguagesString(country.languages()));
+        holder.countryContinent.setText(getOrDefault(country.continent().name(), "Not defined"));
+    }
+
+
+    private String getOrDefault(String value, String defaultValue) {
+        return value != null ? value : defaultValue;
+    }
+
+    private String getLanguagesString(List<CountriesQuery.Language> languages) {
+        StringBuilder languagesStr = new StringBuilder();
+        for (CountriesQuery.Language language : languages) {
+            languagesStr.append(language.name()).append(", ");
+        }
+        return languagesStr.length() > 0 ? languagesStr.substring(0, languagesStr.length() - 2) : "Not Defined";
     }
 
     @Override
@@ -120,16 +60,20 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryV
     }
 
     static class CountryViewHolder extends RecyclerView.ViewHolder {
+        TextView countryEmojiTextView;
         TextView countryNameTextView;
-       // TextView countryEmojiTextView;
-        TextView countryCapitalTextView;
+        TextView countryCapitalTextView,countryCode,countryCurrency,countryLanguages,countryContinent;
+
 
         public CountryViewHolder(@NonNull View itemView) {
             super(itemView);
+            countryEmojiTextView = itemView.findViewById(R.id.countryEmojiTextView);
             countryNameTextView = itemView.findViewById(R.id.countryNameTextView);
-            //countryEmojiTextView = itemView.findViewById(R.id.countryEmojiTextView);
             countryCapitalTextView = itemView.findViewById(R.id.countryCapitalTextView);
+            countryCode= itemView.findViewById(R.id.countryCode);
+            countryCurrency=itemView.findViewById(R.id.countryCurrency);
+            countryLanguages=itemView.findViewById(R.id.countryLanguages);
+            countryContinent=itemView.findViewById(R.id.countryContinent);
         }
     }
 }
-

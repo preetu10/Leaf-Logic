@@ -7,6 +7,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".CountryActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/small_heading"
+        android:layout_marginTop="8dp"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/main"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/heading_for_countries_page"
+        android:padding="8dp"
+        android:textStyle="normal"
+        android:layout_gravity="center_horizontal"
+        android:textSize="15sp"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/blackish"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
