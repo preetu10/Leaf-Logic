@@ -22,7 +22,7 @@ import org.w3c.dom.Text;
 import java.util.Objects;
 
 public class ProfileActivity extends AppCompatActivity {
-    private Button signout,rate,location,newsFeed,detection,country;
+    private Button signout;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firestore;
 
@@ -32,17 +32,13 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
         signout=(Button) findViewById(R.id.signout);
-        newsFeed=(Button) findViewById(R.id.newsFeed);
-        rate=(Button) findViewById(R.id.rateId);
-        location=(Button)findViewById(R.id.see_location);
         userText=(TextView)findViewById(R.id.user_name) ;
         nameText=(TextView) findViewById(R.id.u_name);
         emailText=(TextView)findViewById(R.id.u_email) ;
         phoneText=(TextView)findViewById(R.id.u_phone);
         birthText=(TextView) findViewById(R.id.u_birth);
         professionText=(TextView)findViewById(R.id.u_profession) ;
-        detection=(Button) findViewById(R.id.detection);
-        country=(Button) findViewById(R.id.countries);
+
 
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
@@ -85,32 +81,6 @@ public class ProfileActivity extends AppCompatActivity {
                     });
         }
 
-        rate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, AverageRatingActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
-        location.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, MapsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        detection.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, DetectionActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,27 +94,6 @@ public class ProfileActivity extends AppCompatActivity {
                 }
             }
         });
-
-        newsFeed.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, NewsFeedActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
-        country.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProfileActivity.this, CountryActivity.class);
-                startActivity(intent);
-
-            }
-        });
-
-
-
 
     }
 }

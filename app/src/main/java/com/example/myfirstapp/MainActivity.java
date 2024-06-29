@@ -12,8 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private Button getStarted;
     private Button about;
 
-    private Button rating;
-    private Button weatherUpdate;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getStarted= (Button) findViewById(R.id.startId);
         about=(Button) findViewById(R.id.aboutUs);
-        rating=(Button)findViewById(R.id.rating);
-        weatherUpdate=(Button)findViewById(R.id.weatherId);
+
        getStarted.setOnClickListener(new View.OnClickListener(){
            @Override
            public void onClick(View v) {
@@ -40,20 +38,8 @@ public class MainActivity extends AppCompatActivity {
                startActivity(intent);
            }
        });
-       rating.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent(MainActivity.this,AverageRatingActivity.class);
-               startActivity(intent);
-           }
-       });
-       weatherUpdate.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               Intent intent = new Intent(MainActivity.this,WeatherActivity.class);
-               startActivity(intent);
-           }
-       });
+
+
 
 
 

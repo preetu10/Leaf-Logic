@@ -78,6 +78,15 @@
     <string name="language">Language:</string>
     <string name="continent">Continent:</string>
     <string name="small_heading">Global Country Insights</string>
-    <string name="heading_for_countries_page">Unlock the essence of each country with details on capitals, languages, and cultural highlights.</string>
+    <string name="heading_for_countries_page">Unlock the essence of each
+        country with details on capitals, languages, and cultural highlights.</string>
+    <string name="newsfeed">News Feed</string>
+    <string name="my_profile">My Profile</string>
+    <string name="my_location">My Location</string>
+    <string name="weather">Weather Update</string>
+    <string name="classify">Identify Leaf</string>
+    <string name="country">Country Explorer</string>
+    <string name="heading_for_detection">Identify your leaf</string>
+
 
 </resources>

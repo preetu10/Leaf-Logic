@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                                 sessionManager.setLoggedIn(true);
 
                                 Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
+                                Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                                 startActivity(intent);
                                 finish(); // close the login activity
                             } else {
