@@ -69,15 +69,15 @@ public class CreatePostActivity extends AppCompatActivity {
                         binding.userName.setText(username);
                     }
                     else{
-                        Toast.makeText(CreatePostActivity.this,"userName cannot be loaded", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreatePostActivity.this,"UserName cannot be loaded", Toast.LENGTH_SHORT).show();
 
                     }
                 } else {
-                    Toast.makeText(CreatePostActivity.this,"userName cannot be loaded", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CreatePostActivity.this,"UserName cannot be loaded", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 Exception e = task.getException();
-                Toast.makeText(CreatePostActivity.this,"userName cannot be loaded", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CreatePostActivity.this,"UserName cannot be loaded", Toast.LENGTH_SHORT).show();
 
             }
         });

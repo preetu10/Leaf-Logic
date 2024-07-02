@@ -4,6 +4,7 @@
     <color name="blackish">#131318</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#fbfff4</color>
+    <color name="background_2">#EFECE7</color>
     <color name="main">#304D30</color>
     <color name="button">#E87D36</color>
     <color name="hover_over_main">#527853</color>

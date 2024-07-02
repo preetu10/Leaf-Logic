@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/background"
     android:layout_height="match_parent"
+    android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".CountryActivity">
+    tools:context=".AllRatingsActivity">
     <ImageView
         android:id="@+id/logo"
         android:layout_width="200dp"
         android:layout_height="180dp"
         android:src="@drawable/logo"
         android:layout_marginBottom="0dp"
-        android:layout_gravity="center_horizontal"
+       android:layout_gravity="center_horizontal"
         android:layout_marginTop="5dp"
         android:scaleType="fitCenter"
         android:contentDescription="@string/logo"
@@ -21,29 +21,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/small_heading"
-        android:layout_marginTop="8dp"
+        android:text="@string/all_rating_heading"
+        android:layout_marginTop="12dp"
         android:padding="5dp"
         android:textStyle="bold"
         android:layout_gravity="center"
+        android:layout_marginBottom="12dp"
         android:textSize="22sp"
         android:textColor="@color/main"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/heading_for_countries_page"
-        android:padding="8dp"
-        android:textStyle="normal"
-        android:layout_gravity="center_horizontal"
-        android:textSize="17sp"
-        android:layout_marginHorizontal="12dp"
-        android:layout_marginBottom="5dp"
-        android:textColor="@color/blackish"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+        android:id="@+id/recycler_rating"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 </LinearLayout>
-
-

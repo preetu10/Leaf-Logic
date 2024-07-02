@@ -103,6 +103,7 @@ public class CommentsActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Void unused) {
                                 Toast.makeText(CommentsActivity.this, "Comment Added Successfully" , Toast.LENGTH_SHORT).show();
+                                binding.commentEd.setText("");
                             }
                         })
                                 .addOnFailureListener(new OnFailureListener() {

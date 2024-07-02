@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center_vertical"
     android:padding="20dp"
-    android:background="@color/card_background"
+    android:background="@drawable/edittext_border"
     tools:context=".AverageRatingActivity">
 
     <androidx.cardview.widget.CardView

@@ -169,6 +169,65 @@
             />
     </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:paddingHorizontal="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feature5"
+                android:textSize="18sp"
+                android:textColor="@color/main"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:textColorHighlight="@color/hover_over_main"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feature5_description"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="4dp"
+                android:textStyle="normal"
+                android:lineHeight="15dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:paddingHorizontal="5dp"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feature6"
+                android:textSize="18sp"
+                android:textColor="@color/main"
+                android:layout_marginTop="8dp"
+                android:textStyle="bold"
+                android:textColorHighlight="@color/hover_over_main"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/feature6_description"
+                android:textSize="15sp"
+                android:textColor="@color/black"
+                android:layout_marginTop="4dp"
+                android:textStyle="normal"
+                android:lineHeight="15dp"
+                />
+        </LinearLayout>
+
         <WebView
             android:id="@+id/webvideo"
             android:layout_width="350dp"

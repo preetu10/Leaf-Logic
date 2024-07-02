@@ -188,37 +188,7 @@ public class DetectionActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-//    void fetchPlantData(String plantName,String label) {
-//        Log.d("plant", "Fetching data for plant: " + plantName);
-//        firestore.collection("plants")
-//                .whereEqualTo("plantName", plantName)
-//                .get()
-//                .addOnCompleteListener(task -> {
-//            if (task.isSuccessful()) {
-//
-//                if (document.exists()) {
-//                    Log.d("plant found", "Fetched");
-//                    String scientificNameText = document.getString("scientificName");
-//                    String descriptionText = document.getString("description");
-//                    String propertiesText = document.getString("medicinalProperties");
-//
-//                    scientificName.setVisibility(View.VISIBLE);
-//                    description.setVisibility(View.VISIBLE);
-//                    properties.setVisibility(View.VISIBLE);
-//
-//                    scientificName.setText("Scientific Name: " + scientificNameText);
-//                    description.setText("Description: " + descriptionText);
-//                    properties.setText("Medicinal Properties: " + propertiesText);
-//                } else {
-//                    Log.d("plant", "No document found for plant: " + label);
-//                    Toast.makeText(DetectionActivity.this, "No data found for the detected plant", Toast.LENGTH_SHORT).show();
-//                }
-//            } else {
-//                Log.d("plant", "Error fetching data for plant: " + label);
-//                Toast.makeText(DetectionActivity.this, "Error fetching data", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
+
 
     void fetchPlantData(String plantName) {
         Log.d("Firestore", "Starting fetch for plant: " + plantName);

@@ -18,17 +18,18 @@
     <string name="about_description">Ever wondered what medicinal properties lurk in that fascinating leaf
         you found? Leaf Logic is your mobile companion, empowering you to identify and unlock the potential
         of medicinal plants with ease</string>
-    <string name="key_features">Key Features:</string>
-    <string name="feature1">Accurate Leaf Identification: </string>
-    <string name="feature1_description">Use our image recognition technology to instantly identify unknown
-        leaves and discover their medicinal uses.</string>
-    <string name="feature2">Learn and Share: </string>
+    <string name="key_features">Key Features</string>
+    <string name="feature1">Accurate Leaf Identification </string>
+    <string name="feature1_description">Use our image recognition technology to instantly identify
+        whether your leaf is one of the following leaves: Bohera, Horitoki, Lemon grass, Nayon tara,
+        Pathor kuchi. And you can also get acquainted with their characteristics.</string>
+    <string name="feature2">Learn and Share </string>
     <string name="feature2_description">Dive into a wealth of information about various medicinal plants,
         their properties, and traditional uses</string>
-    <string name="feature3">Share Your Knowledge:  </string>
+    <string name="feature3">Share Your Knowledge  </string>
     <string name="feature3_description">Contribute to the community by posting blogs with images and insights
         about using medicinal plants.</string>
-    <string name="feature4">Engage and Discuss: </string>
+    <string name="feature4">Engage and Discuss </string>
     <string name="feature4_description">Like, dislike, and comment on blog posts to share your experiences
         and learn from others.</string>
     <string name="address">Location of Head Quarter:</string>
@@ -52,7 +53,7 @@
     <string name="rate_us_description_own">Give 1 star for poor experience and 5 stars for a very good experience.</string>
     <string name="rate_us_description_own2">Give some feedback please as your feedback helps us a lot to improve facilities we provide to our users.</string>
     <string name="rate_policy">Ratings and reviews are verified and are from people who use the same type of device that you use.</string>
-    <string name="see_today_weather">See Today\'s Weather Update of Any CIty</string>
+    <string name="see_today_weather">See More Information</string>
     <string name="enter_city_name">Enter Your City Name</string>
     <string name="see_weather">Weather Update</string>
     <string name="ok">OK</string>
@@ -60,7 +61,7 @@
     <string name="max_temp">Maximum Temperature:</string>
     <string name="min_temp">Minimum Temperature:</string>
     <string name="humidity">Humidity:</string>
-    <string name="pressure">Pressure:</string>
+    <string name="pressure">Pressure (in mbar):</string>
     <string name="see_your_location">See Your Location</string>
     <string name="write_something">Write to post something here
     </string>
@@ -87,6 +88,14 @@
     <string name="classify">Identify Leaf</string>
     <string name="country">Country Explorer</string>
     <string name="heading_for_detection">Identify your leaf</string>
+    <string name="feature5_description">Explore a comprehensive directory of countries,
+        complete with essential details such as capitals, languages, and unique characteristics to
+        enhance your understanding of the world.</string>
+    <string name="feature5">Discover Global Insights</string>
+    <string name="feature6_description">Stay informed with real-time weather updates for
+        any city of your choice using our convenient search feature.</string>
+    <string name="feature6">Stay Updated with Weather</string>
+    <string name="all_rating_heading">Rating of All Users</string>
 
 
 </resources>

@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class AverageRatingActivity extends AppCompatActivity {
-    private Button doRating;
+    private Button doRating,seeAllRating;
     private TextView averageRating, usersCount;
 
     private RatingBar rate, averageRatingBar;
@@ -59,6 +59,7 @@ public class AverageRatingActivity extends AppCompatActivity {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
+        seeAllRating=(Button) findViewById(R.id.seeAllRatingsId);
 
         if(currentUser!=null){
             doRating.setVisibility(View.VISIBLE);
@@ -66,6 +67,14 @@ public class AverageRatingActivity extends AppCompatActivity {
         else{
             doRating.setVisibility(View.GONE);
         }
+
+        seeAllRating.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AverageRatingActivity.this, AllRatingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         doRating.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,12 +92,13 @@ public class AverageRatingActivity extends AppCompatActivity {
                 rate.setStepSize(1);
                 rate.setRating(0);
 
+
                 submitButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         int ratingCount = (int) rate.getRating();
                         String feedback = feedbackText.getText().toString().trim();
-                        String ratedBy = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
+                        String ratedById = Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
 
                         if (ratingCount  == 0) {
                             Toast.makeText(AverageRatingActivity.this, "Please provide rating", Toast.LENGTH_SHORT).show();
@@ -98,8 +108,23 @@ public class AverageRatingActivity extends AppCompatActivity {
                             return;
                         }
                         else {
-                            checkAndSubmitRating(ratedBy,ratingCount,feedback);
-                            dialog.dismiss();
+
+                            firestore.collection("users")
+                                    .document(ratedById)
+                                    .get()
+                                    .addOnCompleteListener(task -> {
+                                        if (task.isSuccessful()) {
+                                            DocumentSnapshot document = task.getResult();
+                                            String ratedBy = document.getString("userName");
+                                            checkAndSubmitRating(ratedById,ratingCount,feedback,ratedBy);
+                                            dialog.dismiss();
+
+                                        } else {
+                                            Log.e("Firestore", "Error fetching data for plant: ");
+                                            Toast.makeText(AverageRatingActivity.this, "Error fetching data", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
                         }
                     }
                 });
@@ -108,6 +133,7 @@ public class AverageRatingActivity extends AppCompatActivity {
         // Listen for changes in real time to the average rating
         listenForAverageRating();
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -153,7 +179,7 @@ public class AverageRatingActivity extends AppCompatActivity {
         });
     }
 
-    private void checkAndSubmitRating(String userId, int ratingCount, String feedback) {
+    private void checkAndSubmitRating(String userId, int ratingCount, String feedback,String ratedBy) {
         firestore.collection("ratings")
                 .document(userId)
                 .get()
@@ -162,10 +188,10 @@ public class AverageRatingActivity extends AppCompatActivity {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
                             // User has already submitted a rating
-                            updateRating(userId, ratingCount, feedback);
+                            updateRating(userId, ratingCount, feedback,ratedBy);
                         } else {
                             // User hasn't submitted a rating before
-                            submitNewRating(userId, ratingCount, feedback);
+                            submitNewRating(userId, ratingCount, feedback,ratedBy);
                         }
                     } else {
                         Log.e("Firestore", "Error checking for existing rating", task.getException());
@@ -173,10 +199,11 @@ public class AverageRatingActivity extends AppCompatActivity {
                 });
     }
 
-    private void updateRating(String userId, int ratingCount, String feedback) {
+    private void updateRating(String userId, int ratingCount, String feedback,String ratedBy) {
         Map<String, Object> rating = new HashMap<>();
         rating.put("ratingValue", ratingCount);
         rating.put("feedback", feedback);
+        rating.put("ratedBy",ratedBy);
 
         firestore.collection("ratings")
                 .document(userId)
@@ -189,10 +216,12 @@ public class AverageRatingActivity extends AppCompatActivity {
                     Toast.makeText(AverageRatingActivity.this, "Failed to update rating. Please try again.", Toast.LENGTH_SHORT).show();
                 });
     }
-    private void submitNewRating(String userId, int ratingCount, String feedback) {
+    private void submitNewRating(String userId, int ratingCount, String feedback,String ratedBy) {
         Map<String, Object> rating = new HashMap<>();
         rating.put("ratingValue", ratingCount);
         rating.put("feedback", feedback);
+        rating.put("ratedBy",ratedBy);
+
 
         firestore.collection("ratings")
                 .document(userId)
