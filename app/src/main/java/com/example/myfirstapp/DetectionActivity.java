@@ -4,6 +4,7 @@ import org.tensorflow.lite.support.image.TensorImage;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
@@ -13,11 +14,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -39,6 +43,8 @@ public class DetectionActivity extends AppCompatActivity {
     TextView result, scientificName, description, properties;
     ImageView imageView;
     Bitmap bitmap;
+    Toolbar toolbar;
+    SessionManager sessionManager;
 
     private FirebaseFirestore firestore;
 
@@ -60,6 +66,9 @@ public class DetectionActivity extends AppCompatActivity {
         description = findViewById(R.id.plant_description);
         properties = findViewById(R.id.medicinalProperties);
         imageView = findViewById(R.id.imageView);
+        sessionManager = new SessionManager(getApplicationContext());
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         // Initialize Firestore
       //  db = FirebaseFirestore.getInstance();
@@ -140,6 +149,33 @@ public class DetectionActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.dashboard_item){
+            Intent intent = new Intent(DetectionActivity.this,DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+        if(id==R.id.logout_item){
+            if(sessionManager.isLoggedIn()) {
+                FirebaseAuth.getInstance().signOut();
+                sessionManager.setLoggedIn(false);
+                Intent intent = new Intent(DetectionActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        }
+        return true;
     }
 
     int getMax(float[] arr) {

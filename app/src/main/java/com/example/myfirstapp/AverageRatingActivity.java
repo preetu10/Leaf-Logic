@@ -3,6 +3,7 @@ package com.example.myfirstapp;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -10,6 +11,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,6 +49,8 @@ public class AverageRatingActivity extends AppCompatActivity {
     private FirebaseFirestore firestore;
 
     private ListenerRegistration averageRatingListener;
+    Toolbar toolbar;
+    SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,11 +60,15 @@ public class AverageRatingActivity extends AppCompatActivity {
         averageRating=(TextView) findViewById(R.id.averageRatingId);
         usersCount=(TextView) findViewById(R.id.userCountId);
         averageRatingBar=(RatingBar) findViewById(R.id.averageRatingBarId);
-        SessionManager sessionManager = new SessionManager(getApplicationContext());
+        sessionManager = new SessionManager(getApplicationContext());
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseAuth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
         seeAllRating=(Button) findViewById(R.id.seeAllRatingsId);
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
 
         if(currentUser!=null){
             doRating.setVisibility(View.VISIBLE);
@@ -132,6 +141,33 @@ public class AverageRatingActivity extends AppCompatActivity {
         });
         // Listen for changes in real time to the average rating
         listenForAverageRating();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.dashboard_item){
+            Intent intent = new Intent(AverageRatingActivity.this,DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+        if(id==R.id.logout_item){
+            if(sessionManager.isLoggedIn()) {
+                FirebaseAuth.getInstance().signOut();
+                sessionManager.setLoggedIn(false);
+                Intent intent = new Intent(AverageRatingActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        }
+        return true;
     }
 
     @Override

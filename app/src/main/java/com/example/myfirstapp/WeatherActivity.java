@@ -1,10 +1,15 @@
 package com.example.myfirstapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.hardware.input.InputManager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -14,6 +19,7 @@ import com.example.myfirstapp.Modals.WeatherData;
 import com.example.myfirstapp.Modals.main;
 import com.example.myfirstapp.Modals.weather;
 import com.example.myfirstapp.databinding.ActivityWeatherBinding;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,6 +37,8 @@ public class WeatherActivity extends AppCompatActivity {
 
     ConstraintLayout constraintLayout;
     private EditText getCityName;
+    Toolbar toolbar;
+    SessionManager sessionManager ;
 
 
     @Override
@@ -38,6 +46,9 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityWeatherBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        sessionManager = new SessionManager(getApplicationContext());
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         getCityName=(EditText)findViewById(R.id.get_city);
         SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy");
@@ -59,6 +70,33 @@ public class WeatherActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.dashboard_item){
+            Intent intent = new Intent(WeatherActivity.this,DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+        if(id==R.id.logout_item){
+            if(sessionManager.isLoggedIn()) {
+                FirebaseAuth.getInstance().signOut();
+                sessionManager.setLoggedIn(false);
+                Intent intent = new Intent(WeatherActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        }
+        return true;
     }
 
     void hideKeyBoard(){

@@ -2,11 +2,14 @@ package com.example.myfirstapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -28,6 +31,9 @@ public class NewsFeedActivity extends AppCompatActivity {
     private PostsAdapter postsAdapter;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firestore;
+
+    Toolbar toolbar;
+    SessionManager sessionManager;
     private DocumentSnapshot firstVisiblePost;
     private DocumentSnapshot lastVisiblePost;
     private int pageSize = 3; // Number of posts per page
@@ -40,6 +46,9 @@ public class NewsFeedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityNewsFeedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        sessionManager = new SessionManager(getApplicationContext());
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         postsAdapter = new PostsAdapter(NewsFeedActivity.this);
         binding.postRecyclerView.setAdapter(postsAdapter);
@@ -70,6 +79,33 @@ public class NewsFeedActivity extends AppCompatActivity {
 
         // Load the first page initially
         loadPage(currentPage);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        if(id==R.id.dashboard_item){
+            Intent intent = new Intent(NewsFeedActivity.this,DashboardActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+        if(id==R.id.logout_item){
+            if(sessionManager.isLoggedIn()) {
+                FirebaseAuth.getInstance().signOut();
+                sessionManager.setLoggedIn(false);
+                Intent intent = new Intent(NewsFeedActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                finish();
+            }
+        }
+        return true;
     }
 
     private void loadPage(int page) {

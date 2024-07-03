@@ -8,6 +8,7 @@
     <color name="main">#304D30</color>
     <color name="button">#E87D36</color>
     <color name="hover_over_main">#527853</color>
+    <color name="hover_over_main2">#F0F8F8</color>
     <color name="card_background">#EAECCC</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -17,3 +18,4 @@
     <color name="lavender">#8692f7</color>
 
 </resources>
+<!---->

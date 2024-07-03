@@ -47,7 +47,7 @@
     <string name="send_feedback">Send Feedback</string>
     <string name="write_here">Write Here</string>
     <string name="submit">Submit</string>
-    <string name="rated_by">Rated By:</string>
+    <string name="rated_by">Number of Raters:</string>
     <string name="users">users</string>
     <string name="see_all_rating">See All Ratings</string>
     <string name="rate_us_description_own">Give 1 star for poor experience and 5 stars for a very good experience.</string>
@@ -96,6 +96,7 @@
         any city of your choice using our convenient search feature.</string>
     <string name="feature6">Stay Updated with Weather</string>
     <string name="all_rating_heading">Rating of All Users</string>
+    <string name="subheading_for_all_heading">Discover the rating and feedbacks given by our users.</string>
 
 
 </resources>
