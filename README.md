@@ -1,6 +1,6 @@
 # Leaf Logic - Medicinal Plant Leaf Classification App
 
-**Leaf Logic** is an Android application developed using **Java** and **Android Studio** that allows users to identify medicinal plant leaves, share posts, interact with others, and explore exciting features like weather updates, location tracking, and country information.
+**Leaf Logic** is an Android application developed using **Java** and **Android Studio** that allows users to identify medicinal plant leaves, share posts, interact with others, and explore exciting features like weather updates, location tracking, and country information. This project was completed as part of my academic journey during the **"Mobile Apps Development Lab"** course, where I applied various mobile development concepts to create an app with real-world utility.
 
 ## Features
 
