@@ -12,6 +12,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Menu;
@@ -26,8 +27,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import java.util.Objects;
 
 import android.Manifest;
@@ -35,16 +38,22 @@ import android.widget.Toast;
 
 import com.example.myfirstapp.ml.ModelUnquant;
 
+
+
+
 import org.tensorflow.lite.DataType;
 import org.tensorflow.lite.support.tensorbuffer.TensorBuffer;
 
 public class DetectionActivity extends AppCompatActivity {
     Button selectBtn, predictBtn, captureBtn;
-    TextView result, scientificName, description, properties;
+    TextView result, scientificName, description, properties,accuracyText;
     ImageView imageView;
     Bitmap bitmap;
     Toolbar toolbar;
     SessionManager sessionManager;
+    String accuracy,plantName,scientificNameText,descriptionText,propertiesText;
+
+
 
     private FirebaseFirestore firestore;
 
@@ -69,6 +78,7 @@ public class DetectionActivity extends AppCompatActivity {
         sessionManager = new SessionManager(getApplicationContext());
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+       accuracyText=findViewById(R.id.accuracy);
 
         // Initialize Firestore
       //  db = FirebaseFirestore.getInstance();
@@ -127,18 +137,26 @@ public class DetectionActivity extends AppCompatActivity {
                         TensorBuffer outputFeature0 = outputs.getOutputFeature0AsTensorBuffer();
                         int predictedLabelIndex = getMax(outputFeature0.getFloatArray());
                         String predictedLabel = labels[predictedLabelIndex];
-
+                     //   Log.d("accuracy", (Arrays.toString(outputFeature0.getFloatArray())));
                         // Extract the plant name from the label
-                        String plantName = extractPlantName(predictedLabel);
+                         plantName = extractPlantName(predictedLabel);
+//                        plantPercentages = new HashMap<>();
 
                         result.setText(plantName);
 
                         String indexNumber=extractIndexNumber(predictedLabel);
                         Log.d("plant", plantName);
+                        float[] confidences = outputFeature0.getFloatArray();
+                        float accuracyFound = confidences[predictedLabelIndex]*100;
 
-                        // Fetch data from Firestore
                         fetchPlantData(plantName);
 
+//                        for (int i = 0; i < confidences.length; i++) {
+//                            plantPercentages.put(labels[i], confidences[i] * 100); // Convert to percentage
+//                        }
+
+                        accuracy=String.format("%.2f%%",accuracyFound);
+                        Log.d("highest accuracy", accuracy);
                         // Releases model resources if no longer used
                         model.close();
                     } catch (IOException e) {
@@ -238,17 +256,20 @@ public class DetectionActivity extends AppCompatActivity {
                         if (!task.getResult().isEmpty()) {
                             DocumentSnapshot document = task.getResult().getDocuments().get(0); // Get the first document
                             Log.d("Firestore", "Document found for plant: " + plantName);
-                            String scientificNameText = document.getString("scientificName");
-                            String descriptionText = document.getString("description");
-                            String propertiesText = document.getString("medicinalProperties");
+                             scientificNameText = document.getString("scientificName");
+                             descriptionText = document.getString("description");
+                             propertiesText = document.getString("medicinalProperties");
+
 
                             scientificName.setVisibility(View.VISIBLE);
                             description.setVisibility(View.VISIBLE);
                             properties.setVisibility(View.VISIBLE);
+                            accuracyText.setVisibility(View.VISIBLE);
 
                             scientificName.setText("Scientific Name: " + scientificNameText);
                             description.setText("Description: " + descriptionText);
                             properties.setText("Medicinal Properties: " + propertiesText);
+                            accuracyText.setText("Detection Accuracy: "+ accuracy);
                         } else {
                             Log.d("Firestore", "No document found for plant: " + plantName);
                             Toast.makeText(DetectionActivity.this, "No data found for the detected plant", Toast.LENGTH_SHORT).show();
